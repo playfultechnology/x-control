@@ -33,5 +33,22 @@ The original wiring of the hat switch may seem fairly complicated. Indeed, it wa
 | Down-Left| 82kΩ + 240kΩ (in parallel) | 586 |
 | Down-Right| 82kΩ + 27kΩ (in parallel) | 759 |
 
-### Software
+Note all resistors listed are wired in parallel with the 82.5kΩ central resistor (the blue resistor in the above image)
 
+### Software
+See x-control.ino for code implementation, which should be uploaded to an ATMega32u4-based board such as an Arduino Pro Micro.
+The code makes use of the excellent HID library by NicoHood - https://github.com/NicoHood/HID
+
+To edit the description of the hardware (e.g. as displayed by Windows when the device is connected), it is necessary to follow these additional steps:
+ - Edit the boards.txt file. This can either be found at *C:\Users\%USERNAME%\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3* or *%ARDUINO_INSTALL_DIR%\arduino-1.8.9\hardware\arduino\avr*
+ - Add the following lines to the bottom of the file. This will create a new menu option in the Arduino IDE allowing you to override the build options of the "Micro" target.
+menu.custom=Build Overrides
+micro.menu.custom.micro=Arduino/Genuino Micro
+micro.menu.custom.micro.build.usb_product="Arduino Micro"
+micro.menu.custom.micro_1=xcontrol
+micro.menu.custom.micro_1.build.usb_product="X-Control-1"
+micro.menu.custom.micro_1.build.vid=0x1209
+micro.menu.custom.micro_1.build.pid=0x0C01
+- Note that Windows caches metadata for each USB PID/VID. If it becomes necessary to update the metadata for this device, you may need to use regedit to delete the following entries for the VIDxxxx and PIDyyyy values used:
+HKEY_USERS\S-1-5-21-4161308201-3297097293-619256985-1002\System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_xxxx&PID_yyyy
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB\VID_xxxx&PID_xxxx
