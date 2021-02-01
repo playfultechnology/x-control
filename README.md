@@ -24,6 +24,7 @@ The original wiring of the hat switch may seem fairly complicated. Indeed, it wa
 ![x-control-1 hat](xcontrol1/hat_wiring.jpg)
 
 | Hat Position | Resistor |
+| ------------ | -------- |
 | Left | 240kΩ |
 | Up | 200Ω |
 | Centre | 82.5kΩ |
