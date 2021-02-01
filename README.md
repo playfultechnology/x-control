@@ -5,6 +5,7 @@ Open Source USB-HID custom control interfaces
 The x-control-1 is a primary controller interface based on the design of the Thrustmaster FCS Mark I.
 The FCS features 2 analog axes, 4 digital buttons, and a 6-position POV hat switch (analog). The original design featured a 15-pin DSUB gameport interface.
 X-Control-1 retains all functionality of the original design, exposed as a modern USB HID device.
+![x-control-1 hat](xcontrol1/interior_cutaway.jpg)
 
 ### Schematic
 ![x-control-1 schematic](xcontrol1/xcontrol1_schem.jpg)
@@ -18,8 +19,9 @@ The value of the pot was read using a monostable multivibrator circuit, which me
 
 In modern circuits, it is more common to wire either end of the pot to GND and VCC, and to connect the middle wiper output to a DAC to read the resistance value, and this is the approach taken here.
 
-#### Pot
+#### Hat
 The original wiring of the hat switch may seem fairly complicated. Indeed, it was the subject of a [U.S. Patent 5389950](https://uspto.report/patent/grant/5389950). Each directional switch in the hat corresponds to a different resistor value. These are wired in parallel with a resistor connected to the centre switch, meaning that a number of discrete digital inputs can be multiplexed together into a single analog value. By reading that value via an ADC and applying appropriate logic in code, we can work out what combination of resistors must have been connected.
+![x-control-1 hat](xcontrol1/hat_wiring.jpg)
 
 ### Software
 
