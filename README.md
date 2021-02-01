@@ -30,8 +30,8 @@ The original wiring of the hat switch may seem fairly complicated. Indeed, it wa
 | Centre | 82.5kΩ |
 | Down| 82kΩ |
 | Right| 27kΩ |
-| Down-Left| 82kΩ + 240kΩ |
-| Down-Right| 82kΩ + 27kΩ |
+| Down-Left| 82kΩ + 240kΩ (in parallel) |
+| Down-Right| 82kΩ + 27kΩ (in parallel) |
 
 ### Software
 
