@@ -23,15 +23,15 @@ In modern circuits, it is more common to wire either end of the pot to GND and V
 The original wiring of the hat switch may seem fairly complicated. Indeed, it was the subject of a [U.S. Patent 5389950](https://uspto.report/patent/grant/5389950). Each directional switch in the hat corresponds to a different resistor value. These are wired in parallel with a resistor connected to the centre switch, meaning that a number of discrete digital inputs can be multiplexed together into a single analog value. By reading that value via an ADC and applying appropriate logic in code, we can work out what combination of resistors must have been connected.
 ![x-control-1 hat](xcontrol1/hat_wiring.jpg)
 
-| Hat Position | Resistor |
-| ------------ | -------- |
-| Left | 240kΩ |
-| Up | 200Ω |
-| Centre | 82.5kΩ |
-| Down| 82kΩ |
-| Right| 27kΩ |
-| Down-Left| 82kΩ + 240kΩ (in parallel) |
-| Down-Right| 82kΩ + 27kΩ (in parallel) |
+| Hat Position | Resistor | 10-bit ADC value (split over 47kΩ divider) |
+| ------------ | -------- | ------------------------------------ |
+| Left | 240kΩ | 443 |
+| Up | 200Ω | 1019 |
+| Centre | 82.5kΩ | 371
+| Down| 82kΩ | 545 |
+| Right| 27kΩ | 714 |
+| Down-Left| 82kΩ + 240kΩ (in parallel) | 586 |
+| Down-Right| 82kΩ + 27kΩ (in parallel) | 759 |
 
 ### Software
 
